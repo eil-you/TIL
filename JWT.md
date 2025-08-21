@@ -57,4 +57,22 @@ HMACSHA256(
 3. 📤 이후 요청에 JWT 포함 (Authorization: Bearer <token>)
 4. ✅ 서버는 토큰을 검증하고 사용자 인증 수행
 
-   
+## JWT와 같이 사용한 것
+1. 리프레쉬 토큰(Refresh Token)
+   ✅ 목적
+   Access Token은 짧은 시간만 유효함 (보안 강화).
+   Access Token이 만료됐을 때, 다시 로그인하지 않고도 Refresh Token으로 새로운 Access Token을 발급 받기 위함.
+
+✅ 구현 방식
+
+로그인 시:
+Access Token + Refresh Token 둘 다 발급
+Access Token은 클라이언트(예: 브라우저) 저장
+Refresh Token은 DB 또는 Redis에 저장 (보안상 클라이언트 보관은 위험)
+
+Access Token이 만료되면:
+클라이언트는 Refresh Token으로 새로운 Access Token 요청
+서버는 Refresh Token이 유효한지 검사 후, 새 토큰 재발급
+
+3. Spring security 연동
+4. HTTPS 적용
