@@ -1,4 +1,4 @@
-# Java: 기본 데이터 타입 (Primitive Type) vs 참조 데이터 타입 (Reference Type)
+# 기본 데이터 타입 (Primitive Type) vs 참조 데이터 타입 (Reference Type)
 
 자바의 데이터 타입은 크게 **기본 타입(Primitive Type)**과 **참조 타입(Reference Type)**으로 나뉩니다. 이 둘의 가장 큰 차이점은 **값이 저장되는 방식**과 **메모리 위치**에 있습니다.
 
