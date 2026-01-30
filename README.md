@@ -13,6 +13,7 @@
 - [생성자 vs 빌더 패턴](./Java/Constructor_vs_Builder.md)
 - [메모리 누수(Memory Leak)](./Java/Memory%20Leak.md)
 - [람다와 메서드 참조](./Java/Lambda_and_Method_Reference.md)
+- [StringBuilder 작동 원리](./Java/StringBuilder.md)
 - [기타 Java 학습 노트](./Java/)
 
 ### 💻 Computer Science (CS)
@@ -31,6 +32,7 @@
 ---
 
 ## 🛠️ 최근 업데이트 (Recent Updates)
+- `2026-01-30`: StringBuilder 작동 원리 및 동적 배열 확장 메커니즘 정리
 - `2026-01-26`: JVM 작동 원리 및 내부 구조 정리
 - `2026-01-26`: 알고리즘 문제 풀이 (체육복, 실패율 등)
 - `2026-01-25`: RESTful API 및 면접 예상 질문 정리
