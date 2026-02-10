@@ -182,6 +182,55 @@ Collections.reverse(list);
 return list.stream().mapToInt(Integer::intValue).toArray();
 ```
 
+6. **특정 규칙으로 문자열 변환 (외계행성의 나이)**
+- 숫자의 각 자릿수를 순회하며 아스키(ASCII) 값을 조작해 문자로 변환한 뒤 다시 하나로 합칠 때 유용합니다.
+- `chars()`는 문자의 아스키 값을 `IntStream`으로 반환하며, `mapToObj`와 `Collectors.joining()`을 조합해 최종 문자열을 만듭니다.
+
+```java
+public String solution(int age) {
+    // 예: age가 23이면 "2", "3"의 아스키 값에 조작을 가해 "cd"로 변환
+    return String.valueOf(age).chars()
+                 .mapToObj(operand -> String.valueOf((char) (49 + operand)))
+                 .collect(Collectors.joining());
+}
+```
+
+7. **요소의 순위(Rank) 구하기**
+- 배열의 각 요소가 전체에서 몇 번째로 큰지(또는 작은지) 순위를 매길 때 사용합니다.
+- 중첩 스트림을 사용하면 한 줄로 구현 가능하지만, 성능상의 주의가 필요합니다.
+
+```java
+public int[] solution(int[] e) {
+    return Arrays.stream(e)
+            .map(i -> Arrays.stream(e)
+                            .boxed()
+                            .sorted(Comparator.reverseOrder())
+                            .collect(Collectors.toList())
+                            .indexOf(i) + 1)
+            .toArray();
+}
+```
+> **⚠️ 주의 (성능)**: 위 코드는 바깥쪽 루프($N$) 안에서 매번 정렬($N \log N$)과 검색($N$)을 수행하므로 시간 복잡도가 **$O(N^2 \log N)$**입니다. 데이터가 많을 경우 매우 느려질 수 있습니다.
+
+**[최적화 방식 - $O(N \log N)$]**
+```java
+public int[] solution(int[] e) {
+    // 정렬을 미리 한 번만 수행
+    List<Integer> sortedList = Arrays.stream(e)
+            .boxed()
+            .sorted(Comparator.reverseOrder())
+            .collect(Collectors.toList());
+
+    return Arrays.stream(e)
+            .map(i -> sortedList.indexOf(i) + 1)
+            .toArray();
+}
+```
+
+---
+
+---
+
 ---
 
 ---
